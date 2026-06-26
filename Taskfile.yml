@@ -19,3 +19,17 @@ tasks:
       - build
     cmds:
       - sudo mv ../bin/zed-creds /usr/local/bin/zed-creds
+
+  snapshot:
+    desc: Build a local snapshot release (no git tag required)
+    cmds:
+      - goreleaser release --snapshot --clean
+
+  release:
+    desc: Tag and publish a release (requires GITHUB_TOKEN and a clean git state)
+    requires:
+      vars: [VERSION]
+    cmds:
+      - git tag -a v{{.VERSION}} -m "Release v{{.VERSION}}"
+      - git push origin v{{.VERSION}}
+      - goreleaser release --clean

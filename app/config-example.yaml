@@ -1,0 +1,9 @@
+# Copy to config.yaml and adjust for your account.
+
+role: bedrock-direct-call-sonnet-4-6
+
+aws:
+  region: eu-central-1
+  # role_arn: "arn:aws:iam::12345678912:role/bedrock-direct-call-sonnet-4-6"  # optional override; account ID is resolved via STS GetCallerIdentity when omitted
+  session_name: zed-cli
+  duration_seconds: 3600

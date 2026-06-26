@@ -1,0 +1,21 @@
+# https://taskfile.dev
+
+version: "3"
+
+tasks:
+  default:
+    cmds:
+      - task -l
+    silent: true
+
+  build:
+    dir: app
+    cmds:
+      - go build -o ../bin/zed-creds main.go
+
+  install:
+    dir: app
+    deps:
+      - build
+    cmds:
+      - sudo mv ../bin/zed-creds /usr/local/bin/zed-creds
